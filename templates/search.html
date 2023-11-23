@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs on the web</title>
+</head>
+<body>
+    <h1>Dogs on the web</h1>
+    <form action="/search">
+        <input type="text" id="breed" name="breed">
+        <input type="submit">
+    </form>
+    <h2>U zocht naar {{breed}}</h2>
+    {% for dog in output %}
+        <h3>{{dog["name"]}}</h3>
+        <p>Levensduur: {{dog["life_span"].replace("years","jaren")}}</p>
+        <p>Gewicht: {{dog["weight"]["metric"]}} kg</p>
+        <!-- https://cdn2.thedogapi.com/images/-HgpNnGXl.jpg -->
+        <img width="30%"
+        src="https://cdn2.thedogapi.com/images/{{dog['reference_image_id']}}.jpg"/>
+    {% endfor %}
+    <p>{{output}}</p>
+</body>
+</html>
